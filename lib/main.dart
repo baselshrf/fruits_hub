@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/helper_functions/on_generate_routes.dart';
-import 'package:e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/generated/l10n.dart';
 

@@ -1,6 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/core/services/shared_preferences_singleton.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
