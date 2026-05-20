@@ -59,7 +59,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
             child: CustomButton(
               onPressed: () {
-                Prefs.setBool(kIsOnBoardingViewSeen, true);
+                //   Prefs.setBool(kIsOnBoardingViewSeen, true);
                 Navigator.of(
                   context,
                 ).pushReplacementNamed(SigninView.routeName);

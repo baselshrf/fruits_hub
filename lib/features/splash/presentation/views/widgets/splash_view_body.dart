@@ -27,25 +27,41 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [SvgPicture.asset(Assets.imagesPlant)],
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            SvgPicture.asset(
+              Assets.imagesPlant,
+              width: MediaQuery.of(context).size.width * 0.2,
+              height: MediaQuery.of(context).size.height * 0.2,
+              fit: BoxFit.contain,
+            ),
+          ],
         ),
-        SvgPicture.asset(Assets.imagesLogo),
-        SvgPicture.asset(Assets.imagesSplashBottom, fit: BoxFit.fill),
+        SvgPicture.asset(
+          Assets.imagesLogo,
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.2,
+          fit: BoxFit.contain,
+        ),
+        SvgPicture.asset(
+          Assets.imagesSplashBottom,
+          height: MediaQuery.of(context).size.height * 0.2,
+          fit: BoxFit.fill,
+        ),
       ],
     );
   }
 
   void excuteNaviagtion() {
-    bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
-    Future.delayed(const Duration(seconds: 3), () {
-      if (isOnBoardingViewSeen) {
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(context, SigninView.routeName);
-      } else {
-        // ignore: use_build_context_synchronously
-        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
-      }
+    //  bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
+    Future.delayed(const Duration(seconds: 20), () {
+      //   if (isOnBoardingViewSeen) {
+      //     // ignore: use_build_context_synchronously
+      //     Navigator.pushReplacementNamed(context, SigninView.routeName);
+      //   } else {
+      //     // ignore: use_build_context_synchronously
+      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+      //  }
     });
   }
 }

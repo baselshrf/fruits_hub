@@ -36,13 +36,18 @@ class PageviewItem extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SvgPicture.asset(image),
+                child: SvgPicture.asset(
+                  image,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  fit: BoxFit.contain,
+                ),
               ),
               Visibility(
                 visible: isVisible,
                 child: GestureDetector(
                   onTap: () {
-                    Prefs.setBool(kIsOnBoardingViewSeen, true);
+                    //Prefs.setBool(kIsOnBoardingViewSeen, true);
 
                     Navigator.of(
                       context,
@@ -53,7 +58,7 @@ class PageviewItem extends StatelessWidget {
                     child: Text(
                       'تخط',
                       style: TextStyles.regular13.copyWith(
-                        color: const Color(0xFF949D9E),
+                        color: Color(0xFF949D9E),
                       ),
                     ),
                   ),
@@ -62,7 +67,7 @@ class PageviewItem extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 64),
+        const SizedBox(height: 62),
         title,
         const SizedBox(height: 24),
         Padding(
