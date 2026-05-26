@@ -3,7 +3,7 @@ import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
-import 'package:e_commerce/features/auth/presentation/views/widgets/custom_text_field.dart';
+import 'package:e_commerce/core/widgets/custom_text_field.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/dont_have_account_widget.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/or_divider.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/social_login_button.dart';
