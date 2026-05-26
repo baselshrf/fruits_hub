@@ -9,14 +9,14 @@ import 'package:e_commerce/features/auth/presentation/views/widgets/or_divider.d
 import 'package:e_commerce/features/auth/presentation/views/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SigninViewBody extends StatelessWidget {
+  const SigninViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kHorizintalPadding),
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
         child: SingleChildScrollView(
           child: Column(
             children: [
