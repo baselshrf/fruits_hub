@@ -4,35 +4,50 @@ import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/core/widgets/custom_text_field.dart';
+import 'package:e_commerce/core/widgets/password_field.dart';
+import 'package:e_commerce/features/auth/presentation/cubits/signin_cubit/signin_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/dont_have_account_widget.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/or_divider.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SigninViewBody extends StatelessWidget {
+class SigninViewBody extends StatefulWidget {
   const SigninViewBody({super.key});
 
   @override
+  State<SigninViewBody> createState() => _SigninViewBodyState();
+}
+
+class _SigninViewBodyState extends State<SigninViewBody> {
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  late String email, password;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-        child: SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          autovalidateMode: autovalidateMode,
           child: Column(
             children: [
               const SizedBox(height: 24),
-              const CustomTextFormField(
+              CustomTextFormField(
+                onSaved: (value) {
+                  email = value!;
+                },
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
-              const CustomTextFormField(
-                suffixIcon: Icon(
-                  Icons.remove_red_eye,
-                  color: Color(0xffC9CECF),
-                ),
-                hintText: 'كلمة المرور',
-                textInputType: TextInputType.visiblePassword,
+              PasswordField(
+                onSaved: (value) {
+                  password = value!;
+                },
               ),
               const SizedBox(height: 16),
               Row(
@@ -47,7 +62,19 @@ class SigninViewBody extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 33),
-              CustomButton(onPressed: () {}, text: 'تسجيل دخول'),
+              CustomButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+
+                    context.read<SigninCubit>().signin(email, password);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+                text: 'تسجيل دخول',
+              ),
               const SizedBox(height: 33),
               const DontHaveAnAccountWidget(),
               const SizedBox(height: 33),
