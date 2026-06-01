@@ -49,9 +49,9 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure(e.message));
     } catch (e) {
       log(
-        'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
+        'Exception in AuthRepoImpl.signinWithEmailAndPassword: ${e.toString()}',
       );
-      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
 
@@ -61,10 +61,8 @@ class AuthRepoImpl extends AuthRepo {
       var user = await firebaseAuthService.signInWithGoogle();
       return right(UserModel.fromFirebaseUser(user));
     } catch (e) {
-      log(
-        'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
-      );
-      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+      log('Exception in AuthRepoImpl.signinWithGoogle: ${e.toString()}');
+      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
 }
