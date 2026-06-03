@@ -13,11 +13,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 
 void main() async {
-  setupGetIt();
   Bloc.observer = CustomBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // await Prefs.init();
+  setupGetIt();
   runApp(const FruitHub());
 }
 
