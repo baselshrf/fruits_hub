@@ -17,4 +17,6 @@ abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> signinWithGoogle();
 
   Future addUserData({required UserEntity user});
+
+  Future<UserEntity> getUserData({required String uid});
 }
