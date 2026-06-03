@@ -5,4 +5,9 @@ class UserEntity {
   final String uId;
 
   UserEntity({required this.name, required this.email, required this.uId});
+
+  // ignore: strict_top_level_inference
+  toMap() {
+    return {'name': name, 'email': email, 'uId': uId};
+  }
 }
