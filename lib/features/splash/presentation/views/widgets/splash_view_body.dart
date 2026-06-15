@@ -2,7 +2,6 @@ import 'package:e_commerce/core/services/firebase_auth_service.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
 import 'package:e_commerce/features/home/presentation/views/home_view.dart';
-import 'package:e_commerce/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 

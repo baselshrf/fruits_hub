@@ -88,6 +88,7 @@ class AuthRepoImpl extends AuthRepo {
       } else {
         await addUserData(user: userEntity);
       }
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
@@ -100,6 +101,7 @@ class AuthRepoImpl extends AuthRepo {
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
       path: BackendEndpoint.addUserData,
+      documentId: user.uId,
       data: UserModel.fromEntity(user).toMap(),
     );
   }

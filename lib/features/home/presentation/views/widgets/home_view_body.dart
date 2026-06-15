@@ -27,11 +27,11 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(height: 12),
                 BestSellingHeader(),
                 SizedBox(height: 8),
-
-                BestSellingGridView(),
               ],
             ),
           ),
+
+          BestSellingGridView(),
         ],
       ),
     );

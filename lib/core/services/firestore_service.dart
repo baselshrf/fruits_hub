@@ -10,7 +10,7 @@ class FireStoreService implements DatabaseService {
     String? documentId,
   }) async {
     if (documentId != null) {
-      firestore.collection(path).doc(documentId).set(data);
+      await firestore.collection(path).doc(documentId).set(data);
     } else {
       await firestore.collection(path).add(data);
     }
@@ -21,8 +21,8 @@ class FireStoreService implements DatabaseService {
     required String path,
     required String docuementId,
   }) async {
-    var data = await firestore.collection(path).doc(docuementId).get();
-    return data.data() as Map<String, dynamic>;
+    final data = await firestore.collection(path).doc(docuementId).get();
+    return Map<String, dynamic>.from(data.data() ?? {});
   }
 
   @override
