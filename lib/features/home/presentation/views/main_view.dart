@@ -1,16 +1,16 @@
 import 'package:e_commerce/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
-import 'package:e_commerce/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:e_commerce/features/home/presentation/views/widgets/home_view.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class MainView extends StatelessWidget {
+  const MainView({super.key});
 
-  static const routeName = 'home_view';
+  static const routeName = 'main_view';
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
-      body: SafeArea(child: HomeViewBody()),
+      body: SafeArea(child: HomeView()),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:e_commerce/core/services/firebase_auth_service.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/features/auth/presentation/views/signin_view.dart';
-import 'package:e_commerce/features/home/presentation/views/home_view.dart';
+import 'package:e_commerce/features/home/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -65,7 +65,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       var isLoggedIn = FirebaseAuthService().isLoggedIn();
 
       if (isLoggedIn) {
-        Navigator.pushReplacementNamed(context, HomeView.routeName);
+        Navigator.pushReplacementNamed(context, MainView.routeName);
       } else {
         Navigator.pushReplacementNamed(context, SigninView.routeName);
       }
