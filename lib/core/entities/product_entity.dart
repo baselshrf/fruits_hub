@@ -1,6 +1,8 @@
 import 'package:e_commerce/core/entities/review_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class ProductEntity {
+// ignore: must_be_immutable
+class ProductEntity extends Equatable {
   final String name;
   final String code;
   final String description;
@@ -29,4 +31,7 @@ class ProductEntity {
     required this.isFeatured,
     this.imageUrl,
   });
+
+  @override
+  List<Object?> get props => [code];
 }

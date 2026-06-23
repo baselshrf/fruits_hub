@@ -3,7 +3,10 @@ import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_text_styles.dart';
 import 'package:e_commerce/core/widgets/custom_network_image.dart';
+import 'package:e_commerce/features/home/domain/entities/cart_item_entity.dart';
+import 'package:e_commerce/features/home/presentation/cubits/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -76,9 +79,15 @@ class FruitItem extends StatelessWidget {
                     ),
                     textAlign: TextAlign.right,
                   ),
-                  trailing: const CircleAvatar(
-                    backgroundColor: AppColors.primaryColor,
-                    child: Icon(Icons.add, color: Colors.white),
+
+                  trailing: GestureDetector(
+                    onTap: () {
+                      context.read<CartCubit>().addProduct(productEntity);
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: AppColors.primaryColor,
+                      child: Icon(Icons.add, color: Colors.white),
+                    ),
                   ),
                 ),
               ],
