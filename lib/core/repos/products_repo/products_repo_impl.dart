@@ -11,6 +11,7 @@ class ProductsRepoImpl extends ProductsRepo {
 
   ProductsRepoImpl(this.databaseService);
 
+  @override
   Future<Either<Failure, List<ProductEntity>>> getBestSellingProducts() async {
     try {
       var data =

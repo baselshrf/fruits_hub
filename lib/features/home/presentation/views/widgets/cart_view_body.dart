@@ -1,6 +1,5 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
-import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/cart_header.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/cart_items_list.dart';

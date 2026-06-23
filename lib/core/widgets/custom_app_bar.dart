@@ -3,6 +3,7 @@ import 'package:e_commerce/core/widgets/notification_widget.dart';
 import 'package:flutter/material.dart';
 
 AppBar buildAppBar(
+  // ignore: strict_top_level_inference
   context, {
   required String title,
   bool showBackButton = true,

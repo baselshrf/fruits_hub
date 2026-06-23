@@ -16,6 +16,7 @@ class FireStoreService implements DatabaseService {
     }
   }
 
+  @override
   Future<dynamic> getData({
     required String path,
     String? docuementId,

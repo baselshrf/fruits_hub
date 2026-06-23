@@ -16,11 +16,11 @@ class CartItemEntity extends Equatable {
     return productEntity.unitAmount * count;
   }
 
-  increasCount() {
+  void increasCount() {
     count++;
   }
 
-  decreasCount() {
+  void decreasCount() {
     count--;
   }
 

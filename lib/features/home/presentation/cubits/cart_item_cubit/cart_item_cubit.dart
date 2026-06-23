@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce/features/home/domain/entities/cart_item_entity.dart';
 import 'package:equatable/equatable.dart';

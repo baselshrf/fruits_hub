@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/search_text_field.dart';
 import 'products_grid_view_bloc_builder.dart';
-import 'custom_home_app_bar.dart';
 
 class ProductsViewBody extends StatefulWidget {
   const ProductsViewBody({super.key});

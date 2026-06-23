@@ -7,6 +7,11 @@ class InActiveItem extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.transparent, child: SvgPicture.asset(image));
+    return Center(
+      child: Container(
+        color: Colors.transparent,
+        child: SvgPicture.asset(image),
+      ),
+    );
   }
 }
