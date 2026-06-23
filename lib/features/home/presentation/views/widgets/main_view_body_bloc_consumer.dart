@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/helper_functions/build_error_bar.dart';
-import 'package:e_commerce/features/home/presentation/cubits/cubit/cart_cubit.dart';
+import 'package:e_commerce/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/home/presentation/views/widgets/main_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +15,10 @@ class MainViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is CartItemAdded) {
           buildErrorBar(context, 'تمت العملية بنجاح');
+        }
+
+        if (state is CartItemRemoved) {
+          buildErrorBar(context, 'تم حذف العنصر بنجاح');
         }
       },
       child: MainViewBody(currentViewIndex: currentViewIndex),

@@ -12,18 +12,18 @@ class CartCubit extends Cubit<CartState> {
   CartEntity cartEntity = CartEntity([]);
   void addProduct(ProductEntity productEntity) {
     bool isProductExist = cartEntity.isExis(productEntity);
-    var carItem = cartEntity.getCarItem(productEntity);
+    var cartItem = cartEntity.getCartItem(productEntity);
 
     if (isProductExist) {
-      carItem.increasCount();
+      cartItem.increasCount();
     } else {
-      cartEntity.addCartItem(carItem);
+      cartEntity.addCartItem(cartItem);
     }
     emit(CartItemAdded());
   }
 
-  void deleteCarItem(CartItemEntity carItem) {
-    cartEntity.removeCartItem(carItem);
+  void deleteCartItem(CartItemEntity cartItem) {
+    cartEntity.removeCartItem(cartItem);
     emit(CartItemRemoved());
   }
 }

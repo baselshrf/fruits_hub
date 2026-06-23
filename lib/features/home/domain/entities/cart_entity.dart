@@ -11,8 +11,8 @@ class CartEntity {
   }
 
   bool isExis(ProductEntity product) {
-    for (var carItem in cartItems) {
-      if (carItem.productEntity == product) {
+    for (var cartItem in cartItems) {
+      if (cartItem.productEntity == product) {
         return true;
       }
     }
@@ -21,22 +21,22 @@ class CartEntity {
 
   double calculateTotalPrice() {
     double totalPrice = 0;
-    for (var carItem in cartItems) {
-      totalPrice += carItem.calculateTotalPrice();
+    for (var cartItem in cartItems) {
+      totalPrice += cartItem.calculateTotalPrice();
     }
     return totalPrice;
   }
 
-  CartItemEntity getCarItem(ProductEntity product) {
-    for (var carItem in cartItems) {
-      if (carItem.productEntity == product) {
-        return carItem;
+  CartItemEntity getCartItem(ProductEntity product) {
+    for (var cartItem in cartItems) {
+      if (cartItem.productEntity == product) {
+        return cartItem;
       }
     }
     return CartItemEntity(productEntity: product, count: 1);
   }
 
-  void removeCartItem(CartItemEntity carItem) {
-    cartItems.remove(carItem);
+  void removeCartItem(CartItemEntity cartItem) {
+    cartItems.remove(cartItem);
   }
 }
