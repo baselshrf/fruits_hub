@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entities/shipping_address_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_view_body.dart';
 import 'package:e_commerce/features/home/domain/entities/cart_entity.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,10 @@ class CheckoutView extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context, title: 'الشحن', showNotification: false),
       body: Provider.value(
-        value: OrderEntity(cartEntity),
+        value: OrderEntity(
+          cartEntity,
+          shippingAddressEntity: ShippingAddressEntity(),
+        ),
         child: const CheckoutViewBody(),
       ),
     );
