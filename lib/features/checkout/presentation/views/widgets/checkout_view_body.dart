@@ -16,9 +16,15 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   @override
   void initState() {
     pageController = PageController();
+    pageController.addListener(() {
+      setState(() {
+        currentPageIndex = pageController.page!.toInt();
+      });
+    });
     super.initState();
   }
 
+  int currentPageIndex = 0;
   @override
   void dispose() {
     pageController.dispose();
@@ -32,23 +38,39 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          const CheckoutSteps(),
+          CheckoutSteps(
+            currentPageIndex: currentPageIndex,
+            pageController: pageController,
+          ),
           Expanded(
             child: CheckoutStepsPageView(pageController: pageController),
           ),
           CustomButton(
             onPressed: () {
               pageController.animateToPage(
-                2,
+                currentPageIndex + 1,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.bounceIn,
               );
             },
-            text: 'التالي',
+            text: getNextButtonText(currentPageIndex),
           ),
           const SizedBox(height: 32),
         ],
       ),
     );
+  }
+
+  String getNextButtonText(int currentPageIndex) {
+    switch (currentPageIndex) {
+      case 0:
+        return 'التالي';
+      case 1:
+        return 'التالي';
+      case 2:
+        return 'الدفع عبر PayPal';
+      default:
+        return 'التالي';
+    }
   }
 }

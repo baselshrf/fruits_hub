@@ -53,7 +53,7 @@ class ShippingItem extends StatelessWidget {
                     subTitle,
                     textAlign: TextAlign.right,
                     style: TextStyles.regular13.copyWith(
-                      color: Colors.black.withOpacity(.5),
+                      color: Colors.black.withValues(alpha: .5),
                     ),
                   ),
                 ],
