@@ -3,16 +3,17 @@ import 'package:e_commerce/features/checkout/presentation/views/widgets/shipping
 import 'package:flutter/material.dart';
 
 class PaymentSection extends StatelessWidget {
-  const PaymentSection({super.key});
+  const PaymentSection({super.key, required this.pageController});
 
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SizedBox(height: 24),
-        OrderSummryWidget(),
-        SizedBox(height: 16),
-        ShippingAddressWidget(),
+        const SizedBox(height: 24),
+        const OrderSummryWidget(),
+        const SizedBox(height: 16),
+        ShippingAddressWidget(pageController: pageController),
       ],
     );
   }
