@@ -19,7 +19,7 @@ class SigninViewBodyBlocConsumer extends StatelessWidget {
         }
 
         if (state is SigninFailure) {
-          showErrorBar(context, state.message);
+          showBar(context, state.message);
         }
       },
       builder: (context, state) {
