@@ -31,7 +31,7 @@ class ShippingAddressModel {
     return '$address $floor $city';
   }
 
-  toJson() {
+  Map<String, String?> toJson() {
     return {
       'name': name,
       'phone': phone,

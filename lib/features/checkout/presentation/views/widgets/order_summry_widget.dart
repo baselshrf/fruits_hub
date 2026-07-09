@@ -23,7 +23,7 @@ class OrderSummryWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice()}جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice()}جنيه',
                 textAlign: TextAlign.right,
                 style: TextStyles.semiBold16,
               ),
@@ -56,7 +56,7 @@ class OrderSummryWidget extends StatelessWidget {
               const Text('الكلي', style: TextStyles.bold16),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
+                '${context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() + 30} جنيه',
                 style: TextStyles.bold16,
               ),
             ],

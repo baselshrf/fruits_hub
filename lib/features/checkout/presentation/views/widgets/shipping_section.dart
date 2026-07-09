@@ -16,7 +16,7 @@ class _ShippingSectionState extends State<ShippingSection>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    var orderEntity = context.read<OrderEntity>();
+    var orderEntity = context.read<OrderInputEntity>();
     return Column(
       children: [
         const SizedBox(height: 33),
@@ -30,7 +30,7 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
           price:
-              (context.read<OrderEntity>().cartEntity.calculateTotalPrice() +
+              (context.read<OrderInputEntity>().cartEntity.calculateTotalPrice() +
                       30)
                   .toString(),
         ),
@@ -45,7 +45,7 @@ class _ShippingSectionState extends State<ShippingSection>
           title: 'الدفع اونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
           price: context
-              .read<OrderEntity>()
+              .read<OrderInputEntity>()
               .cartEntity
               .calculateTotalPrice()
               .toString(),

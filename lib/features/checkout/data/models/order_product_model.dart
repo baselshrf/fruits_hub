@@ -27,7 +27,7 @@ class OrderProductModel {
     );
   }
 
-  toJson() {
+  Map<String, Object> toJson() {
     return {
       'name': name,
       'code': code,
