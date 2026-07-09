@@ -1,18 +1,17 @@
-import 'package:e_commerce/core/helper_functions/build_error_bar.dart';
-import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/step_item.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CheckoutSteps extends StatelessWidget {
   const CheckoutSteps({
     super.key,
     required this.currentPageIndex,
     required this.pageController,
+    required this.onTap,
   });
 
   final int currentPageIndex;
   final PageController pageController;
+  final ValueChanged<int> onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,16 +19,7 @@ class CheckoutSteps extends StatelessWidget {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              var orderEntity = context.read<OrderEntity>();
-              if (context.read<OrderEntity>().payWithCash != null) {
-                pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeIn,
-                );
-              } else {
-                showBar(context, 'يرجي تحديد طريقه الدفع');
-              }
+              onTap(index);
             },
             child: StepItem(
               isActive: index <= currentPageIndex,

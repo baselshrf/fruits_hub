@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:e_commerce/core/helper_functions/build_error_bar.dart';
+import 'package:e_commerce/core/utils/keys.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/checkout/domain/entities/order_entity.dart';
+import 'package:e_commerce/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
+import 'package:e_commerce/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:e_commerce/features/checkout/presentation/views/widgets/checkout_steps_page_view.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +52,28 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
         children: [
           const SizedBox(height: 20),
           CheckoutSteps(
+            onTap: (index) {
+              if (currentPageIndex == 0) {
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeIn,
+                );
+              } else if (index == 1) {
+                var orderEntity = context.read<OrderEntity>();
+                if (orderEntity.payWithCash != null) {
+                  pageController.animateToPage(
+                    index,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
+                } else {
+                  showBar(context, 'يرجي تحديد طريقه الدفع');
+                }
+              } else {
+                _handleAddressValidation();
+              }
+            },
             pageController: pageController,
             currentPageIndex: currentPageIndex,
           ),
@@ -114,53 +141,27 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void _processPayment(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity = PaypalPaymentEntity.fromEntity(
+      orderEntity,
+    );
+    var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) => PaypalCheckoutView(
           sandboxMode: true,
-          clientId: "",
-          secretKey: "",
-          transactions: const [
-            {
-              "amount": {
-                "total": '70',
-                "currency": "USD",
-                "details": {
-                  "subtotal": '70',
-                  "shipping": '30',
-                  "shipping_discount": 0,
-                },
-              },
-              "description": "The payment transaction description.",
-              // "payment_options": {
-              //   "allowed_payment_method":
-              //       "INSTANT_FUNDING_SOURCE"
-              // },
-              "item_list": {
-                "items": [
-                  {
-                    "name": "Apple",
-                    "quantity": 4,
-                    "price": '5',
-                    "currency": "USD",
-                  },
-                  {
-                    "name": "Pineapple",
-                    "quantity": 5,
-                    "price": '10',
-                    "currency": "USD",
-                  },
-                ],
-              },
-            },
-          ],
+          clientId: kPaypalClientId,
+          secretKey: kPaypalSecretKey,
+          transactions: [paypalPaymentEntity.toJson()],
           note: "Contact us for any questions on your order.",
           onSuccess: (Map params) async {
-            print("onSuccess: $params");
+            Navigator.pop(context);
+            addOrderCubit.addOrder(order: orderEntity);
           },
           onError: (error) {
-            print("onError: $error");
             Navigator.pop(context);
+            log(error.toString());
+            showBar(context, 'حدث خطأ في عملية الدفع');
           },
           onCancel: () {
             print('cancelled:');
