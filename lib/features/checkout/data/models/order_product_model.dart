@@ -23,7 +23,7 @@ class OrderProductModel {
       code: cartItemEntity.productEntity.code,
       imageUrl: cartItemEntity.productEntity.imageUrl!,
       price: cartItemEntity.productEntity.price.toDouble(),
-      quantity: cartItemEntity.count,
+      quantity: cartItemEntity.quantity,
     );
   }
 
